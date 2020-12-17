@@ -1,43 +1,81 @@
 package Objetos;
 
-public class Pessoa 
+public abstract class Pessoa 
 {
-	public String nome;
-	public char genero;
-	public int anoNascimento;
-	public int idade;
+	//atributos //encapsulei
+	private String nome;
+	private char genero;
+	private int anoNascimento;
 	
-	public Pessoa() {
-		
-	}
-	
-	
-	public Pessoa(String nome)
-	{
-		this.nome = nome;
-	}
-	public Pessoa(String nome, char genero) 
-	{
-		this.nome= nome;
-		this.genero = genero;
-	}
+	//construtor
 	public Pessoa(String nome, char genero, int anoNascimento) {
-		
 		this.nome = nome;
 		this.genero = genero;
 		this.anoNascimento = anoNascimento;
 	}
 	
-	//METODO
-	public void retornaIidade() {
+	//resto do encapsulamento - getters and setters
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public char getGenero() {
+		return genero;
+	}
+
+	public void setGenero(char genero) {
+		this.genero = genero;
+	}
+
+	public int getAnoNascimento() {
+		return anoNascimento;
+	}
+
+	public void setAnoNascimento(int anoNascimento) {
+		this.anoNascimento = anoNascimento;
+	} 
+	
+	
+	public int voltaIdade() 
+	{
+		if (this.anoNascimento<=1900) {
+			System.out.println("Dados invalidos!!!");
+			return 0;
+		}
+		else 
+		{
+			return 2020 - this.anoNascimento;
+		}
 		
-		this.idade = 2020 - this.anoNascimento;
 	}
 	
-	public void retornaIidade(int anoAtual)
+	public int voltaIdade(int anoAtual) 
 	{
-		this.idade = anoAtual - this.anoNascimento;
+		if (anoAtual==0 || this.anoNascimento <= 1900) 
+		{
+			System.out.println("DADOS INVALIDOS!!!");
+			return 0;
+		} 
+		else
+		{
+			return anoAtual - this.anoNascimento;
+		}
+		
 	}
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
 	
 	
 }

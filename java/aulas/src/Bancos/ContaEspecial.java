@@ -3,6 +3,7 @@ package Bancos;
 public class ContaEspecial extends ContaCorrente
 {
 	private double valorLimite;
+	private double valorCadastroLimite;
 
 	
 	//encapsulamento
@@ -10,6 +11,8 @@ public class ContaEspecial extends ContaCorrente
 	public ContaEspecial(int numeroConta, double valorLimite) {
 		super(numeroConta);
 		this.valorLimite = valorLimite;
+		
+		
 	}
 
 	public double getValorLimite() {
@@ -46,6 +49,29 @@ public class ContaEspecial extends ContaCorrente
 		return teste;
 	}
 	
+	
+	 public void registraLimite() 
+	 {
+		if (valorLimite<=0) {
+			System.out.println("Valor zerado, impossivel realizar!!!");
+		}
+		else {
+			this.valorCadastroLimite = this.valorLimite;
+		}
+		
+	}
+	
+	
+	public void devolverLimite() {
+		if (this.valorLimite < this.valorCadastroLimite) 
+		{
+			double diferenca;
+			diferenca = this.valorCadastroLimite - this.valorLimite;
+			super.debito(diferenca);
+			this.valorLimite += diferenca;
+			
+		}
+	}
 	
 	
 	

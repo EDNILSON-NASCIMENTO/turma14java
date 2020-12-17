@@ -6,28 +6,60 @@ public class BancoTeste {
 
 	public static void main(String[] args) 
 	{
+		Scanner leia = new Scanner(System.in);
 		
-		ContaEmpresa lojaBabi = new ContaEmpresa(500, 15000);
-		ContaCorrente babi = new ContaCorrente(15);
+		char op;//visivel em todo o programa - escopo
+		char saida;
+		int numeroConta=0; //escopo global
 		
-		System.out.println("Saldo da Loja: "+ lojaBabi.getSaldo());
-		System.out.println("Saldo da conta corrente:"+ babi.getSaldo());
+		System.out.println("BANCO DO ED!!!");
+		do
+		{
+			System.out.println("1 - Abertura de conta: ");
+			System.out.println("2 - Acesso a uma conta existente: ");
+			System.out.println("3 - Sair: ");
+			op = leia.next().charAt(0);
+			if (op == '1') 
+			{
+				System.out.println("1 - Conta Poupança");
+				System.out.println("2 - Conta Corrente");
+				System.out.println("3 - Conta Especial");
+				System.out.println("4 - Conta Empresa");
+				System.out.println("5 - conta Universitaria");
+				System.out.print("Digite o numero de sua opção: ");
+				char opconta = leia.next().charAt(0);
+				numeroConta++;
+				System.out.println("Digite o seu CPF:");
+				String cpfConta = leia.next();
+				switch (opconta) 
+				{
+					case '1':
+					{
+						System.out.println("Digite a data de aniversario da conta: ");
+						int dataAniversario = leia.nextInt();
+						ContaPoupanca poupanca = new ContaPoupanca(numeroConta,cpfConta,dataAniversario);
+					}
+					break;	
+				}
+				
+				
+			} 
+			else if (op == '2')
+			{
+				System.out.println("wip");
+			} 
+			else
+			{
+				
+			}
+			System.out.println("Continua S/N");
+			saida = leia.next().toUpperCase().charAt(0);
+			if (saida == 'N') {
+				break;
+			}
 		
-		lojaBabi.credito(1000);
-		babi.credito(500);
-		
-		System.out.println("Novo Saldo da Loja: "+ lojaBabi.getSaldo());
-		System.out.println("Saldo da conta corrente:"+ babi.getSaldo());
-		//lojaBabi.pediEmprestimo(200);
-		lojaBabi.debito(1200);
-		babi.debito(550);
-		System.out.println("Novo Saldo apos a conta de luz da Loja: "+ lojaBabi.getSaldo());
-		System.out.println("Valor disponivel ainda para emprestimo: "+lojaBabi.getEmprestimoEmpresa());
-		System.out.println("Saldo conta corrente Babi: "+babi.getSaldo());
-		
-		
-		
-		
+		} while(true);
+				
 
 	}
 
